@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malaysia Shop Shop Happy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ YELLOW-THEMED POMODORO TOKENS ============ */
+:root{
+  --primary:#FFB800; --primary-light:#FFC933; --primary-lightest:#FFF3CD;
+  --primary-dark:#E0A400; --primary-darkest:#9A7000; --on-primary:#1A1A1A;
+  --soft:#FFF9E8; --soft-2:#FFF6DC;
+  --surface:#FFFFFF; --page:#FFFCF5;
+  --g800:#1A1A1A; --g700:#2B2B2B; --g600:#3E3E3E; --g500:#6F6F6F;
+  --g400:#A6A6A6; --g300:#DCDCDC; --g200:#E8E8E8; --g100:#F2F2F2; --g50:#F7F7F7;
+  --success:#2E7D32; --success-light:#C8E6C9; --warning:#F9A825; --error:#EA1D2C; --info:#1976D2;
+  --star:#FFB800;
+  --r-xs:4px; --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-pill:999px;
+  --sh-low:0 1px 3px rgba(0,0,0,.08); --sh-med:0 2px 8px rgba(0,0,0,.12);
+  --sh-high:0 4px 16px rgba(0,0,0,.16); --sh-max:0 8px 24px rgba(0,0,0,.20);
+  --scrim:rgba(0,0,0,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--page);color:var(--g600);font-size:16px;line-height:1.4}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+@media(min-width:768px){.container{padding:0 24px}}
+@media(min-width:1024px){.container{padding:0 32px}}
+button{font-family:inherit;cursor:pointer;border:none}
+img{display:block}
+
+/* ============ TOP BAR ============ */
+.topbar{background:var(--g800);color:var(--g300);font-size:12px}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;height:32px;gap:16px}
+.topbar a{color:var(--g300);text-decoration:none;margin-left:16px}
+.topbar a:hover{color:var(--primary)}
+
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:50;background:var(--surface);box-shadow:var(--sh-low)}
+.header-inner{display:flex;align-items:center;gap:16px;padding:12px 16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--g800)}
+.logo-mark{width:40px;height:40px;border-radius:50%;background:var(--primary);display:grid;place-items:center;font-size:20px}
+.logo-text{font-weight:800;font-size:20px;line-height:1.1}
+.logo-text small{display:block;font-size:10px;font-weight:600;letter-spacing:2px;color:var(--primary-darkest)}
+.searchbar{flex:1;min-width:220px;display:flex;align-items:center;background:var(--g100);border-radius:var(--r-xl);padding:4px 4px 4px 16px;gap:8px}
+.searchbar input{flex:1;border:none;background:transparent;outline:none;font-size:14px;color:var(--g600)}
+.searchbar input::placeholder{color:var(--g400)}
+.searchbar button{background:var(--primary);color:var(--on-primary);font-weight:700;font-size:14px;border-radius:var(--r-pill);padding:8px 20px}
+.searchbar button:hover{background:var(--primary-light)}
+.cart-btn{position:relative;display:flex;align-items:center;gap:8px;background:var(--primary);color:var(--on-primary);font-weight:700;font-size:14px;border-radius:var(--r-pill);padding:10px 20px}
+.cart-btn:hover{background:var(--primary-light)}
+.cart-badge{position:absolute;top:-6px;right:-4px;min-width:20px;height:20px;border-radius:var(--r-pill);background:var(--g800);color:var(--primary);font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px}
+/* category chips */
+.catnav{display:flex;gap:8px;overflow-x:auto;padding:0 16px 12px;scrollbar-width:none}
+.catnav::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;background:var(--g100);color:var(--g600);font-size:14px;font-weight:500;border-radius:var(--r-pill);padding:8px 16px;transition:.2s}
+.chip:hover{background:var(--g200)}
+.chip.active{background:var(--primary);color:var(--on-primary);font-weight:700}
+
+/* ============ HERO ============ */
+.hero{display:grid;gap:16px;margin-top:24px;grid-template-columns:1fr}
+@media(min-width:1024px){.hero{grid-template-columns:2fr 1fr}}
+.hero-banner{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:320px;box-shadow:var(--sh-low)}
+.hero-banner img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,26,26,.78) 0%,rgba(26,26,26,.35) 45%,transparent 70%);display:flex;flex-direction:column;justify-content:center;padding:32px;gap:12px}
+.hero-kicker{color:var(--primary);font-weight:700;font-size:12px;letter-spacing:3px;text-transform:uppercase}
+.hero-title{color:#fff;font-weight:800;font-size:32px;line-height:1.2;max-width:420px}
+@media(min-width:768px){.hero-title{font-size:40px}}
+.hero-sub{color:var(--g200);font-size:14px;max-width:380px}
+.hero-ctas{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
+.btn-pill{background:var(--primary);color:var(--on-primary);font-weight:700;font-size:16px;border-radius:var(--r-pill);padding:12px 28px}
+.btn-pill:hover{background:var(--primary-light)}
+.btn-ghost{background:transparent;color:#fff;font-weight:600;font-size:16px;border-radius:var(--r-pill);padding:12px 28px;border:2px solid rgba(255,255,255,.6)}
+.btn-ghost:hover{border-color:#fff}
+.hero-side{display:flex;flex-direction:column;gap:16px}
+.coupon-card{background:var(--soft-2);border:2px dashed var(--primary);border-radius:var(--r-md);padding:20px;display:flex;flex-direction:column;gap:8px}
+.coupon-card h3{color:var(--g800);font-size:18px;font-weight:800}
+.coupon-card p{font-size:14px;color:var(--g500)}
+.coupon-code{align-self:flex-start;background:var(--g800);color:var(--primary);font-weight:800;letter-spacing:2px;border-radius:var(--r-xs);padding:6px 14px;font-size:14px}
+.ship-card{background:var(--success-light);border-radius:var(--r-md);padding:20px;display:flex;gap:12px;align-items:center}
+.ship-card .ico{font-size:28px}
+.ship-card b{color:var(--success);font-size:16px;display:block}
+.ship-card span{font-size:13px;color:var(--g600)}
+
+/* ============ SECTIONS ============ */
+section{margin-top:48px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.sec-title{color:var(--g800);font-size:24px;font-weight:800}
+@media(min-width:768px){.sec-title{font-size:28px}}
+.countdown{display:flex;gap:6px;align-items:center}
+.cd-box{background:var(--g800);color:var(--primary);font-weight:800;font-size:16px;border-radius:var(--r-xs);padding:6px 8px;min-width:40px;text-align:center}
+.cd-sep{color:var(--g800);font-weight:800}
+
+/* flash rail */
+.rail{display:flex;gap:16px;overflow-x:auto;padding:4px 4px 16px;scroll-snap-type:x mandatory}
+.rail .p-card{min-width:220px;scroll-snap-align:start}
+
+/* ============ PRODUCT CARD (12px radius identity) ============ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+@media(min-width:1024px){.grid{gap:24px}}
+.p-card{background:var(--surface);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--sh-low);transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column}
+.p-card:hover{box-shadow:var(--sh-med);transform:translateY(-2px)}
+.p-img{position:relative;aspect-ratio:1/1;background:var(--g50)}
+.p-img img{width:100%;height:100%;object-fit:cover}
+.disc{position:absolute;top:8px;left:8px;background:var(--g800);color:var(--primary);font-size:12px;font-weight:800;border-radius:var(--r-xs);padding:4px 8px}
+.fav{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;font-size:15px;color:var(--g400);box-shadow:var(--sh-low)}
+.fav.on{color:var(--error)}
+.p-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.p-name{color:var(--g600);font-size:16px;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p-rate{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--g500)}
+.p-rate .star{color:var(--star);font-weight:800;font-size:13px}
+.p-rate b{color:var(--g800)}
+.p-meta{font-size:12px;color:var(--g500);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tag-free{color:var(--success);font-weight:700}
+.p-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{color:var(--g800);font-weight:800;font-size:16px}
+.price s{color:var(--g400);font-weight:400;font-size:12px;margin-left:6px}
+.add-btn{background:var(--primary);color:var(--on-primary);font-weight:700;font-size:14px;border-radius:var(--r-pill);padding:8px 16px}
+.add-btn:hover{background:var(--primary-light)}
+
+/* ============ CART DRAWER ============ */
+.scrim{position:fixed;inset:0;background:var(--scrim);opacity:0;pointer-events:none;transition:.25s;z-index:90}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--surface);z-index:100;transform:translateX(100%);transition:transform .3s ease;box-shadow:var(--sh-max);display:flex;flex-direction:column;border-radius:var(--r-lg) 0 0 var(--r-lg)}
+.drawer.open{transform:translateX(0)}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--g200)}
+.d-head h2{color:var(--g800);font-size:20px;font-weight:800}
+.d-close{width:36px;height:36px;border-radius:50%;background:var(--g100);font-size:16px;color:var(--g600)}
+.d-items{flex:1;overflow-y:auto;padding:16px 24px;display:flex;flex-direction:column;gap:16px}
+.d-empty{text-align:center;color:var(--g400);font-size:14px;padding:48px 0}
+.d-empty .big{font-size:48px;display:block;margin-bottom:8px}
+.c-item{display:flex;gap:12px;align-items:center}
+.c-item img{width:64px;height:64px;object-fit:cover;border-radius:var(--r-sm)}
+.c-info{flex:1;min-width:0}
+.c-info b{display:block;color:var(--g600);font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-info .price{font-size:14px}
+.stepper{display:flex;align-items:center;background:var(--g100);border-radius:var(--r-pill);padding:2px}
+.stepper button{width:26px;height:26px;border-radius:50%;background:var(--surface);color:var(--g800);font-weight:800;box-shadow:var(--sh-low)}
+.stepper span{min-width:28px;text-align:center;font-size:14px;font-weight:700;color:var(--g800)}
+.d-foot{border-top:1px solid var(--g200);padding:20px 24px;display:flex;flex-direction:column;gap:8px;background:var(--g50)}
+.t-row{display:flex;justify-content:space-between;font-size:14px;color:var(--g500)}
+.t-row.total{color:var(--g800);font-weight:800;font-size:18px}
+.checkout{margin-top:8px;background:var(--primary);color:var(--on-primary);font-weight:800;font-size:16px;border-radius:var(--r-pill);padding:14px;width:100%}
+.checkout:hover{background:var(--primary-light)}
+
+/* ============ TOAST / MOBILE CART BAR / FOOTER ============ */
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,80px);background:var(--g800);color:#fff;font-size:14px;font-weight:600;border-radius:var(--r-pill);padding:12px 24px;z-index:200;transition:.3s;opacity:0;display:flex;gap:8px;align-items:center;box-shadow:var(--sh-high)}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.toast .ok{color:var(--primary)}
+.mobile-cart{display:none;position:fixed;bottom:16px;left:16px;right:16px;z-index:60;background:var(--primary);color:var(--on-primary);font-weight:800;font-size:16px;border-radius:var(--r-pill);padding:14px;box-shadow:var(--sh-high);justify-content:space-between}
+@media(max-width:767px){.mobile-cart{display:flex}}
+footer{margin-top:64px;background:var(--g800);color:var(--g400);padding:48px 0 24px}
+.f-grid{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:32px}
+.f-grid h4{color:var(--primary);font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.f-grid a{display:block;color:var(--g400);text-decoration:none;font-size:14px;margin-bottom:8px}
+.f-grid a:hover{color:var(--primary)}
+.f-bottom{border-top:1px solid var(--g700);padding-top:24px;font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container topbar-inner">
+  <span>📍 Deliver to: Kuala Lumpur 50000</span>
+  <span><a href="#">Orders</a><a href="#">Notifications</a><a href="#">EN / BM</a></span>
+</div></div>
+
+<header>
+  <div class="container header-inner">
+    <a class="logo" href="#"><span class="logo-mark">🛒</span>
+      <span class="logo-text">Malaysia 1st<small>SHOPPING CART</small></span></a>
+    <div class="searchbar">🔍<input id="search" placeholder="Search on Malaysia 1st — nasi lemak, batik, gadgets…">
+      <button onclick="applyFilters()">Search</button></div>
+    <button class="cart-btn" onclick="openCart()">🛒 Cart<span class="cart-badge" id="cartCount">0</span></button>
+  </div>
+  <nav class="catnav container" id="catnav"></nav>
+</header>
+
+<main class="container">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-banner">
+      <img src="assets/hero-banner.jpg" alt="Malaysia Shop Shop Happy">
+      <div class="hero-overlay">
+        <span class="hero-kicker">Malaysia's #1 Online Marketplace</span>
+        <h1 class="hero-title">Malaysia Shop Shop Happy— Merdeka Mega Sale!</h1>
+        <p class="hero-sub">Up to 70% OFF on local favourites, fresh food, fashion & gadgets. Nationwide delivery, from Sabah to Perlis.</p>
+        <div class="hero-ctas">
+          <button class="btn-pill" onclick="location.href='#picks'">Shop Now</button>
+          <button class="btn-ghost" onclick="location.href='#flash'">⚡ Flash Sale</button>
+        </div>
+      </div>
+    </div>
+    <aside class="hero-side">
+      <div class="coupon-card">
+        <h3>🎟️ RM15 OFF</h3>
+        <p>for new users on orders above RM80. Tap to claim your voucher!</p>
+        <span class="coupon-code">MY1ST</span>
+        <button class="add-btn" onclick="toast('Coupon MY1ST claimed! 🎟️')">Claim Coupon</button>
+      </div>
+      <div class="ship-card"><span class="ico">🚚</span>
+        <div><b>Free Shipping</b><span>on all orders above RM50, nationwide.</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- FLASH SALE -->
+  <section id="flash">
+    <div class="sec-head">
+      <h2 class="sec-title">⚡ Flash Sale</h2>
+      <div class="countdown">
+        <span class="cd-box" id="cdH">00</span><span class="cd-sep">:</span>
+        <span class="cd-box" id="cdM">00</span><span class="cd-sep">:</span>
+        <span class="cd-box" id="cdS">00</span>
+      </div>
+    </div>
+    <div class="rail" id="flashRail"></div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section id="picks">
+    <div class="sec-head"><h2 class="sec-title">Best Picks For You</h2></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+
+<footer><div class="container">
+  <div class="f-grid">
+    <div><h4>Malaysia 1st</h4><p style="font-size:14px">The first shopping cart of Malaysia — local sellers, nationwide delivery, terbaik! 🇲🇾</p></div>
+    <div><h4>Categories</h4><a href="#">Food & Fresh</a><a href="#">Fashion</a><a href="#">Electronics</a><a href="#">Groceries</a></div>
+    <div><h4>Help</h4><a href="#">Track Order</a><a href="#">Returns</a><a href="#">Shipping Info</a><a href="#">Contact Us</a></div>
+    <div><h4>Payment</h4><a href="#">FPX / DuitNow</a><a href="#">Touch 'n Go eWallet</a><a href="#">GrabPay</a><a href="#">Cards & COD</a></div>
+  </div>
+  <div class="f-bottom">© 2026 Malaysia 1st Shopping Cart · Dibuat dengan ❤️ di Malaysia</div>
+</div></footer>
+
+<!-- CART -->
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="d-head"><h2>My Cart 🛒</h2><button class="d-close" onclick="closeCart()">✕</button></div>
+  <div class="d-items" id="cartItems"></div>
+  <div class="d-foot">
+    <div class="t-row"><span>Subtotal</span><span id="subT">RM 0.00</span></div>
+    <div class="t-row"><span>Delivery</span><span class="tag-free">FREE</span></div>
+    <div class="t-row total"><span>Total</span><span id="totT">RM 0.00</span></div>
+    <button class="checkout" onclick="checkout()">Checkout →</button>
+  </div>
+</aside>
+<button class="mobile-cart" onclick="openCart()"><span>🛒 View Cart</span><span id="mobTotal">RM 0.00</span></button>
+<div class="toast" id="toastEl"><span class="ok">✓</span><span id="toastMsg"></span></div>
+
+<script>
+/* ============ DATA (save generated images under assets/) ============ */
+const P = [
+ {id:1,name:"Nasi Lemak Bungkus Klasik (Sambal Bilis + Egg)",cat:"Food & Fresh",price:6.90,was:8.90,rating:4.8,sold:"2.1k",meta:"⏱ 30–40 min",img:"assets/nasi-lemak.png",flash:true},
+ {id:2,name:"Durian Musang King Premium (1.8–2.2 kg)",cat:"Food & Fresh",price:89.00,was:129.00,rating:4.9,sold:"850",meta:"🚚 Same-day",img:"assets/durian.png",flash:true},
+ {id:3,name:"Batik Premium Shirt — Royal Blue Gold Embroidery",cat:"Fashion",price:79.00,was:119.00,rating:4.7,sold:"640",meta:"🚚 Free shipping",img:"assets/batik-shirt.png",flash:false},
+ {id:4,name:"AirSound Pro Wireless Earbuds — ANC Edition",cat:"Electronics",price:149.00,was:259.00,rating:4.6,sold:"3.4k",meta:"🚚 Free shipping",img:"assets/earbuds.png",flash:true},
+ {id:5,name:"Ipoh White Coffee Original (15 sticks × 40g)",cat:"Groceries",price:18.90,was:24.90,rating:4.8,sold:"5.2k",meta:"🚚 Free shipping",img:"assets/white-coffee.png",flash:true},
+ {id:6,name:"Kuih Raya Festive Jar Set — Tarts, Ondeh & Kuih Lapis",cat:"Snacks",price:32.00,was:45.00,rating:4.7,sold:"1.3k",meta:"🚚 Free shipping",img:"assets/kuih-jar.png",flash:true},
+ {id:7,name:"Court Sneakers Golden Edition — Unisex",cat:"Fashion",price:199.00,was:299.00,rating:4.8,sold:"920",meta:"🚚 Free shipping",img:"assets/sneakers.png",flash:false},
+ {id:8,name:"Nova X Smartphone 256GB — Midnight Black",cat:"Electronics",price:1499.00,was:1899.00,rating:4.9,sold:"2.7k",meta:"🚚 Free shipping",img:"assets/smartphone.png",flash:false},
+];
+const CATS = ["All","Food & Fresh","Fashion","Electronics","Groceries","Snacks"];
+let activeCat = "All", cart = {}, favs = new Set();
+const rm = n => "RM " + n.toFixed(2);
+const disc = p => "-" + Math.round((1 - p.price/p.was) * 100) + "%";
+
+/* ============ RENDER ============ */
+function cardHTML(p){
+  return `<article class="p-card">
+    <div class="p-img"><img src="${p.img}" alt="${p.name}" loading="lazy">
+      <span class="disc">${disc(p)}</span>
+      <button class="fav ${favs.has(p.id)?'on':''}" onclick="toggleFav(${p.id},this)">${favs.has(p.id)?'♥':'♡'}</button>
+    </div>
+    <div class="p-body">
+      <h3 class="p-name">${p.name}</h3>
+      <div class="p-rate"><span class="star">★</span><b>${p.rating}</b> · ${p.sold} sold</div>
+      <div class="p-meta"><span class="${p.meta.includes('Free')||p.meta.includes('Same')?'tag-free':''}">${p.meta}</span> · ${p.cat}</div>
+      <div class="p-foot"><span class="price">${rm(p.price)}<s>${rm(p.was)}</s></span>
+        <button class="add-btn" onclick="add(${p.id})">+ Add</button></div>
+    </div></article>`;
+}
+function renderCats(){
+  document.getElementById('catnav').innerHTML = CATS.map(c =>
+    `<button class="chip ${c===activeCat?'active':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+}
+function applyFilters(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const list = P.filter(p => (activeCat==="All"||p.cat===activeCat) && p.name.toLowerCase().includes(q));
+  document.getElementById('grid').innerHTML = list.length
+    ? list.map(cardHTML).join('')
+    : `<p style="grid-column:1/-1;text-align:center;color:var(--g400);padding:48px 0">No results found 😅 Try another search.</p>`;
+}
+function setCat(c){ activeCat = c; renderCats(); applyFilters(); }
+function renderFlash(){ document.getElementById('flashRail').innerHTML = P.filter(p=>p.flash).map(cardHTML).join(''); }
+function toggleFav(id,btn){ favs.has(id)?favs.delete(id):favs.add(id); btn.classList.toggle('on'); btn.textContent = favs.has(id)?'♥':'♡'; }
+
+/* ============ CART ============ */
+function add(id){ cart[id]=(cart[id]||0)+1; sync(); toast(`Added to cart: ${P.find(p=>p.id===id).name.slice(0,28)}…`); }
+function step(id,d){ cart[id]+=d; if(cart[id]<=0) delete cart[id]; sync(); }
+function sync(){
+  const n = Object.values(cart).reduce((a,b)=>a+b,0);
+  document.getElementById('cartCount').textContent = n;
+  const items = Object.entries(cart).map(([id,q])=>({p:P.find(x=>x.id==id),q}));
+  const tot = items.reduce((a,i)=>a+i.p.price*i.q,0);
+  document.getElementById('subT').textContent = rm(tot);
+  document.getElementById('totT').textContent = rm(tot);
+  document.getElementById('mobTotal').textContent = rm(tot);
+  document.getElementById('cartItems').innerHTML = items.length ? items.map(i=>`
+    <div class="c-item"><img src="${i.p.img}" alt="">
+      <div class="c-info"><b>${i.p.name}</b><span class="price">${rm(i.p.price*i.q)}</span></div>
+      <div class="stepper"><button onclick="step(${i.p.id},-1)">−</button><span>${i.q}</span><button onclick="step(${i.p.id},1)">+</button></div>
+    </div>`).join('')
+    : `<div class="d-empty"><span class="big">🛒</span>Your cart is empty.<br>Jom shopping!</div>`;
+}
+function openCart(){ document.getElementById('drawer').classList.add('open'); document.getElementById('scrim').classList.add('open'); }
+function closeCart(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('scrim').classList.remove('open'); }
+function checkout(){ if(!Object.keys(cart).length) return toast('Your cart is empty 😅');
+  cart={}; sync(); closeCart(); toast('Order placed! Terima kasih 🎉'); }
+
+/* ============ TOAST & COUNTDOWN ============ */
+let tT; function toast(m){ const t=document.getElementById('toastEl');
+  document.getElementById('toastMsg').textContent=m; t.classList.add('show');
+  clearTimeout(tT); tT=setTimeout(()=>t.classList.remove('show'),2200); }
+function tick(){ const now=new Date(), end=new Date(now); end.setHours(23,59,59,999);
+  let s=Math.max(0,(end-now)/1000|0);
+  cdH.textContent=String(s/3600|0).padStart(2,'0');
+  cdM.textContent=String(s/60%60|0).padStart(2,'0');
+  cdS.textContent=String(s%60).padStart(2,'0'); }
+setInterval(tick,1000); tick();
+
+/* init */
+renderCats(); renderFlash(); applyFilters(); sync();
+document.getElementById('search').addEventListener('input', applyFilters);
+</script>
+</body>
+</html>
